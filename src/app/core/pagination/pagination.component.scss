@@ -1,0 +1,25 @@
+:host {
+  .pagination {
+    li {
+      a {
+        padding: 9px 15px;
+        span {
+          font-size: 26px;
+          line-height: 14px;
+          vertical-align: sub;
+        }
+        &:focus,
+        &:hover {
+          background-color: #fffaeb;
+        }
+      }
+      &.active {
+        a {
+          background-color: #d8e9fb;
+          border-color: #8bc8f6;
+          color: #3a5c7c;
+        }
+      }
+    }
+  }
+}

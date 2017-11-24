@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2 matDialogTitle>
+    <span *ngIf="data.action === 'ADD'">Adicionar Carro</span>
+    <span *ngIf="data.action === 'EDIT'">Editar Carro</span>
+  </h2>
+
+  <mat-dialog-content>
+    <p fxLayout.xs="column" fxLayout="row" fxLayoutGap="2px">
+      <mat-form-field fxFlex fxFlexFill>
+        <input type="text" formControlName="board" [textMask]="{mask: mask}" matInput placeholder="Placa">
+      </mat-form-field>
+      <mat-form-field fxFlex fxFlexFill>
+        <input type="text" formControlName="brand" matInput placeholder="Marca">
+      </mat-form-field>
+      <mat-form-field fxFlex fxFlexFill>
+        <input type="text" formControlName="model" matInput placeholder="Modelo">
+      </mat-form-field>
+    </p>
+    <p fxLayout.xs="column" fxLayout="row" fxLayoutGap="2px">
+      <mat-form-field fxFlex fxFlexFill>
+        <input type="text" formControlName="image" matInput placeholder="Foto">
+      </mat-form-field>
+      <mat-form-field fxFlex fxFlexFill>
+        <mat-select formControlName="fuel" placeholder="Combustível">
+          <mat-option *ngFor="let fuel of ['Gasolina', 'Álcool', 'Flex']" [value]="fuel">
+            {{ fuel }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field fxFlex fxFlexFill>
+        <input type="text" formControlName="value" matInput placeholder="Valor">
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button type="button" mat-button matDialogClose color="primary">CANCELAR</button>
+    <button type="submit" [disabled]="!form.valid" mat-button color="primary">
+      <span *ngIf="data.action === 'ADD'">ADICIONAR</span>
+      <span *ngIf="data.action === 'EDIT'">EDITAR</span>
+    </button>
+  </mat-dialog-actions>
+</form>

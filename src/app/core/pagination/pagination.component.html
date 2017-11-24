@@ -1,0 +1,13 @@
+<nav aria-label="Paginação" class="text-center" *ngIf="data.total_pages > 1">
+  <ul class="pagination">
+    <li [ngClass]="{'disabled': data.current_page == 1}">
+      <a [routerLink]="[router]" [queryParams]="{page: 1}" aria-label="Anterior"><span aria-hidden="true">&laquo;</span></a>
+    </li>
+    <li [ngClass]="{'active': page == data.current_page}" *ngFor="let page of range(data.total_pages)">
+      <a [routerLink]="[router]" [queryParams]="{page: page}">{{page}}</a>
+    </li>
+    <li [ngClass]="{'disabled': data.current_page == data.total_pages}">
+      <a [routerLink]="[router]" [queryParams]="{page: data.total_pages}" aria-label="Próxima"><span aria-hidden="true">&raquo;</span></a>
+    </li>
+  </ul>
+</nav>
